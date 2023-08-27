@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { FormStyled } from './FormStyled';
 
 const INITIAL_STATE = {
@@ -51,3 +51,7 @@ export class Form extends React.Component {
     );
   }
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

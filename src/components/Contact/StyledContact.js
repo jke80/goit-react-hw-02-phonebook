@@ -6,15 +6,21 @@ export const StyledContact = styled.li`
   border: 1px solid #aaa;
   border-radius: 10px;
   min-width: 300px;
-  padding: 10px;
+  padding: 5px;
+  div {
+    flex-grow: 1;
+    div {
+      display: flex;
+      align-items: baseline;
+    }
+  }
 
   p {
     margin: 0;
   }
-  p:first-child {
-    margin: 0 0 10px 0;
-  }
   span {
+    flex-grow: 1;
+    text-align: center;
     font-weight: bold;
   }
 

@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { FilterStyled } from './FilterStyled';
 
@@ -17,4 +17,9 @@ export const Filter = ({ onChange, filter }) => {
       />
     </FilterStyled>
   );
+};
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { StyledContact } from './StyledContact';
 
 export const Contact = ({ contact, onDelete }) => {
@@ -10,12 +12,14 @@ export const Contact = ({ contact, onDelete }) => {
   return (
     <StyledContact>
       <div>
-        <p>
-          Name: <span>{name}</span>
-        </p>
-        <p>
-          Number: <span>{number}</span>
-        </p>
+        <div>
+          <p>Name:</p>
+          <span>{name}</span>
+        </div>
+        <div>
+          <p>Number:</p>
+          <span>{number}</span>
+        </div>
       </div>
 
       <button type="button" onClick={handelDelete}>
@@ -23,4 +27,13 @@ export const Contact = ({ contact, onDelete }) => {
       </button>
     </StyledContact>
   );
+};
+
+Contact.propType = {
+  contact: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };

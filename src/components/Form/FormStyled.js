@@ -18,7 +18,6 @@ export const FormStyled = styled.form`
     border: 1px solid #aaa;
     border-radius: 10px;
     padding: 10px;
-    /* min-width: 300px; */
     width: 100%;
     outline: none;
     cursor: pointer;
