@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormStyled } from './FormStyled';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const INITIAL_STATE = {
   name: '',
@@ -15,7 +16,16 @@ export class Form extends React.Component {
   };
 
   handelSubmit = e => {
-    this.props.onSubmit(e);
+    const { contacts, onSubmit } = this.props;
+    const { name, number } = this.state;
+    e.preventDefault();
+
+    if (contacts.some(contact => contact.name === name)) {
+      Notify.failure(`${name} is already in contacts`);
+      return;
+    }
+
+    onSubmit({ name, number });
     this.setState(INITIAL_STATE);
   };
 

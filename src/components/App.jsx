@@ -18,23 +18,13 @@ const INITIAL_STATE = {
 export class App extends React.Component {
   state = { ...INITIAL_STATE };
 
-  handelSubmit = e => {
-    e.preventDefault();
-
+  handelSubmit = ({ name, number }) => {
     const id = nanoid();
-    const name = e.target.name.value;
-    const number = e.target.number.value;
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, { id, name, number }],
+    }));
 
-    this.setState(({ contacts }) => {
-      if (contacts.some(contact => contact.name === name)) {
-        Notify.failure(`${name} is already in contacts`);
-        return;
-      }
-      Notify.success(`Contact ${name} added successfully`);
-      return { contacts: [...contacts, { id, name, number }] };
-    });
-    this.setState({ name: '' });
-    this.setState({ number: '' });
+    Notify.success(`Contact ${name} added successfully`);
   };
 
   handelDelete = id => {
@@ -72,7 +62,7 @@ export class App extends React.Component {
         }}
       >
         <h1>Phonebook</h1>
-        <Form onSubmit={this.handelSubmit} />
+        <Form onSubmit={this.handelSubmit} contacts={this.state.contacts} />
         {!!this.state.contacts.length && (
           <Filter onChange={this.handelChange} filter={this.state.filter} />
         )}

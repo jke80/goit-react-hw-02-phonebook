@@ -6,11 +6,7 @@ export const ContactList = ({ contacts, onDelete }) => {
   return (
     <ContactListStyled>
       {contacts.map(contact => (
-        <Contact
-          key={contact.id}
-          contact={contact}
-          onDelete={onDelete}
-        ></Contact>
+        <Contact key={contact.id} contact={contact} onDelete={onDelete} />
       ))}
     </ContactListStyled>
   );

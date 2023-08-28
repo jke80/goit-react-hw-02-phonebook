@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 
 import { StyledContact } from './StyledContact';
 
-export const Contact = ({ contact, onDelete }) => {
-  const { id, name, number } = contact;
-
+export const Contact = ({ contact: { id, name, number }, onDelete }) => {
   const handelDelete = () => {
     onDelete(id);
   };
